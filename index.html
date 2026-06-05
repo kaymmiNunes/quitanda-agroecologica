@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta 
+    name="description" 
+    content="Site expositivo de uma quitanda agroecológica de Remígio, com produtos naturais, alimentação saudável, sustentabilidade e contato com a comunidade."
+  >
+
+  <title>Quitanda Agroecológica</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <header class="cabecalho">
+    <nav class="navbar">
+      <a href="#inicio" class="logo">
+        Quitanda <span>Agroecológica</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+        ☰
+      </button>
+
+      <ul class="menu" id="menu">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#agroecologia">Agroecologia</a></li>
+        <li><a href="#localizacao">Localização</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-conteudo">
+        <p class="tagline">Produtos naturais direto para sua mesa</p>
+
+        <h1>Alimentação saudável, produção local e consumo consciente</h1>
+
+        <p>
+          Conheça uma quitanda agroecológica de Remígio comprometida com a qualidade dos alimentos,
+          o cuidado com a comunidade e a valorização de pequenos produtores locais.
+        </p>
+
+        <div class="botoes-hero">
+          <a href="#produtos" class="btn btn-principal">Ver produtos</a>
+          <a href="#contato" class="btn btn-secundario">Entrar em contato</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h2>🌱 Frescor e qualidade</h2>
+        <p>
+          Frutas, verduras, legumes e produtos naturais selecionados para uma rotina
+          mais saudável e sustentável.
+        </p>
+      </div>
+    </section>
+
+    <section id="sobre" class="secao">
+      <div class="container">
+        <div class="titulo-secao">
+          <span>Quem somos</span>
+          <h2>Sobre a Quitanda</h2>
+        </div>
+
+        <div class="sobre-grid">
+          <div>
+            <p>
+              A Quitanda Agroecológica nasceu com o propósito de aproximar a comunidade
+              de alimentos mais saudáveis, naturais e produzidos com responsabilidade.
+              Nosso objetivo é oferecer produtos de qualidade, fortalecendo o consumo
+              consciente e a valorização de produtores locais.
+            </p>
+
+            <p>
+              Mais do que vender alimentos, buscamos incentivar hábitos saudáveis,
+              respeito ao meio ambiente e uma relação mais próxima entre quem produz,
+              quem comercializa e quem consome.
+            </p>
+          </div>
+
+          <div class="missao-card">
+            <h3>Nossa missão</h3>
+            <p>
+              Promover o acesso a alimentos naturais e agroecológicos, contribuindo para
+              a saúde da comunidade e para o fortalecimento da produção local.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="produtos" class="secao secao-verde">
+  <div class="container">
+    <div class="titulo-secao">
+      <span>Catálogo</span>
+      <h2>Produtos disponíveis na quitanda</h2>
+      <p>
+        Conheça alguns produtos naturais, agroecológicos e artesanais disponíveis.
+        As informações nutricionais são referências aproximadas e podem variar conforme
+        safra, preparo e fornecedor.
+      </p>
+    </div>
+
+    <div class="filtros-produtos">
+      <button class="filtro-btn ativo" data-categoria="todos">Todos</button>
+      <button class="filtro-btn" data-categoria="frutas">Frutas</button>
+      <button class="filtro-btn" data-categoria="hortalicas">Hortaliças</button>
+      <button class="filtro-btn" data-categoria="ervas">Ervas</button>
+      <button class="filtro-btn" data-categoria="naturais">Produtos naturais</button>
+    </div>
+
+    <div class="catalogo-grid" id="catalogoProdutos">
+      <!-- Os produtos serão carregados pelo JavaScript -->
+    </div>
+  </div>
+</section>
+
+    <div class="modal-produto" id="modalProduto">
+      <div class="modal-conteudo">
+        <button class="modal-fechar" id="fecharModal" aria-label="Fechar detalhes do produto">
+          &times;
+        </button>
+
+        <img id="modalImagem" src="" alt="">
+
+        <div class="modal-info">
+          <span id="modalCategoria"></span>
+          <h3 id="modalNome"></h3>
+          <p id="modalDescricao"></p>
+
+          <h4>Informações nutricionais aproximadas</h4>
+          <table class="tabela-nutricional">
+            <tbody id="modalNutricional"></tbody>
+          </table>
+
+          <div id="modalUsoTradicionalBox">
+            <h4>Uso tradicional e cuidados</h4>
+            <p id="modalUsoTradicional"></p>
+          </div>
+
+          <p class="aviso-saude">
+            Informações de caráter educativo. Não substituem orientação de nutricionista,
+            médico ou outro profissional de saúde.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <section id="agroecologia" class="secao">
+      <div class="container">
+        <div class="agro-grid">
+          <div>
+            <div class="titulo-secao alinhado-esquerda">
+              <span>Consumo consciente</span>
+              <h2>Por que valorizar a agroecologia?</h2>
+            </div>
+
+            <p>
+              A agroecologia valoriza formas de produção que respeitam o meio ambiente,
+              a saúde das pessoas e o trabalho de produtores locais. Ao escolher produtos
+              agroecológicos, a comunidade contribui para uma alimentação mais saudável
+              e para práticas de consumo mais responsáveis.
+            </p>
+
+            <ul class="lista-beneficios">
+              <li>Fortalece produtores locais.</li>
+              <li>Incentiva hábitos alimentares saudáveis.</li>
+              <li>Valoriza alimentos frescos e naturais.</li>
+              <li>Estimula o cuidado com o meio ambiente.</li>
+            </ul>
+          </div>
+
+          <div class="agro-destaque">
+            <h3>Impacto comunitário</h3>
+            <p>
+              Ao apoiar a quitanda agroecológica, a comunidade contribui para o fortalecimento
+              da economia local, para a valorização de práticas agrícolas sustentáveis e para
+              a construção de uma relação mais próxima entre produtores, comerciantes e consumidores.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="localizacao" class="secao secao-clara">
+      <div class="container">
+        <div class="titulo-secao">
+          <span>Visite a quitanda</span>
+          <h2>Localização e atendimento</h2>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>📍 Endereço</h3>
+            <p>
+              Rua Bento Vitório, 13 - Remígio, PB<br>
+              CEP: 58398-000
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>🕒 Horário</h3>
+            <p>
+              Segunda a sexta: <br>
+              Sábado: 
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>🚚 Atendimento</h3>
+            <p>
+              Atendimento presencial e contato pelo WhatsApp para informações sobre
+              produtos disponíveis.
+            </p>
+          </div>
+        </div>
+
+      <div class="mapa-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254.77578636865826!2d-35.793564334208135!3d-6.966248162470975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ac2c2f33f046fd%3A0x797d70934aafff49!2sR.%20Bento%20Vit%C3%B3rio%2C%2013%20-%20Remigio%2C%20Rem%C3%ADgio%20-%20PB%2C%2058398-000!5e0!3m2!1spt-BR!2sbr!4v1780444626171!5m2!1spt-BR!2sbr"
+          width="100%"|
+          height="350"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localização da Quitanda Agroecológica">
+        </iframe>
+      </div>
+    </section>
+
+    <section id="contato" class="secao contato">
+      <div class="container contato-container">
+        <div>
+          <span class="tagline">Fale conosco</span>
+          <h2>Quer saber quais produtos estão disponíveis hoje?</h2>
+          <p>
+            Entre em contato com a quitanda para consultar produtos, horários,
+            localização ou tirar dúvidas sobre atendimento.
+          </p>
+        </div>
+
+        <div class="contato-acoes">
+          <a 
+            href="https://wa.me/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-principal"
+          >
+            Chamar no WhatsApp
+          </a>
+
+          <a 
+            href="https://www.instagram.com/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-secundario"
+          >
+            Ver Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>
+      &copy; <span id="anoAtual"></span> Quitanda Agroecológica. Todos os direitos reservados.
+    </p>
+
+    <p>
+      Desenvolvido por
+    <a href="https://github.com/kaymminunes" target="_blank" rel="noopener noreferrer">
+      Kaymmi Nunes
+    </a>
+    </p>
+  </footer>
+
+  <script src="assets/js/produtos.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
