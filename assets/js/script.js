@@ -174,3 +174,81 @@ botoesFiltro.forEach((botao) => {
 });
 
 renderizarProdutos();
+
+const modalReceita = document.getElementById("modalReceita");
+const fecharModalReceita = document.getElementById("fecharModalReceita");
+
+const modalReceitaImagem = document.getElementById("modalReceitaImagem");
+const modalReceitaCategoria = document.getElementById("modalReceitaCategoria");
+const modalReceitaNome = document.getElementById("modalReceitaNome");
+const modalReceitaDescricao = document.getElementById("modalReceitaDescricao");
+const modalReceitaIngredientes = document.getElementById("modalReceitaIngredientes");
+const modalReceitaPreparo = document.getElementById("modalReceitaPreparo");
+const produtoRelacionadoReceita = document.getElementById("produtoRelacionadoReceita");
+
+function abrirReceita(id) {
+  const receita = receitas.find((item) => item.id === id);
+
+  if (!receita || !modalReceita) return;
+
+  modalReceitaImagem.src = receita.imagem;
+  modalReceitaImagem.alt = receita.nome;
+
+  modalReceitaImagem.onerror = () => {
+    modalReceitaImagem.src = "assets/img/receitas/geral/prato-agroecologico-servido.jpg";
+  };
+
+  modalReceitaCategoria.textContent = receita.categoria;
+  modalReceitaNome.textContent = receita.nome;
+  modalReceitaDescricao.textContent = receita.descricao;
+
+  modalReceitaIngredientes.innerHTML = "";
+  receita.ingredientes.forEach((ingrediente) => {
+    const item = document.createElement("li");
+    item.textContent = ingrediente;
+    modalReceitaIngredientes.appendChild(item);
+  });
+
+  modalReceitaPreparo.innerHTML = "";
+  receita.preparo.forEach((passo) => {
+    const item = document.createElement("li");
+    item.textContent = passo;
+    modalReceitaPreparo.appendChild(item);
+  });
+
+  produtoRelacionadoReceita.innerHTML = "";
+
+  if (receita.produtoRelacionado && receita.linkProduto) {
+    produtoRelacionadoReceita.innerHTML = `
+      <p>
+        <strong>Produto relacionado:</strong> ${receita.produtoRelacionado}
+      </p>
+
+      <a href="${receita.linkProduto}" class="btn btn-principal">
+        Ver produto relacionado
+      </a>
+    `;
+
+    const linkProduto = produtoRelacionadoReceita.querySelector("a");
+
+    linkProduto.addEventListener("click", () => {
+      modalReceita.classList.remove("ativo");
+    });
+  }
+
+  modalReceita.classList.add("ativo");
+}
+
+if (fecharModalReceita && modalReceita) {
+  fecharModalReceita.addEventListener("click", () => {
+    modalReceita.classList.remove("ativo");
+  });
+}
+
+if (modalReceita) {
+  modalReceita.addEventListener("click", (event) => {
+    if (event.target === modalReceita) {
+      modalReceita.classList.remove("ativo");
+    }
+  });
+}

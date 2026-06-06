@@ -313,9 +313,14 @@
                 Receita feita com mungunzá da paixão, leite de coco, leite de vaca,
                 leite condensado, canela, água, açúcar e uma pitada de sal.
               </p>
-              <a href="" class="link-card">Ver receita</a>
-            </div>
-          </article>
+                  <div class="receita-acoes">
+                    <button class="btn btn-principal" onclick="abrirReceita('mungunza-doce')">
+                      Ver receita completa
+                    </button>
+                    </a>
+                    </div>    
+                  </div>      
+                </article>
 
           <article class="receita-card">
             <img 
@@ -329,7 +334,12 @@
                 Preparação simples e nutritiva feita com mungunzá, água, leite de coco,
                 leite de vaca e sal a gosto.
               </p>
-              <a href="" class="link-card">Ver receita</a>
+              <div class="receita-acoes">
+                <button class="btn btn-principal" onclick="abrirReceita('mungunza-salgado')">
+                  Ver receita completa
+                </button>
+                </a>
+              </div>           
             </div>
           </article>
 
@@ -345,12 +355,45 @@
                 Receita com fubá da paixão, manteiga, açúcar, ovos, farinha de trigo,
                 fermento e erva-doce.
               </p>
-              <a href="" class="link-card">Ver receita</a>
+              <div class="receita-acoes">
+                <button class="btn btn-principal" onclick="abrirReceita('broa-de-fuba')">
+                  Ver receita completa
+                </button>
+                </a>
+              </div>
             </div>
           </article>
         </div>
       </div>
     </section>
+
+    <div class="modal-receita" id="modalReceita">
+      <div class="modal-receita-conteudo">
+        <button 
+          class="modal-fechar" 
+          id="fecharModalReceita" 
+          aria-label="Fechar receita"
+        >
+          &times;
+        </button>
+
+        <img id="modalReceitaImagem" src="" alt="">
+
+        <div class="modal-receita-info">
+          <span id="modalReceitaCategoria"></span>
+          <h3 id="modalReceitaNome"></h3>
+          <p id="modalReceitaDescricao"></p>
+
+          <h4>Ingredientes</h4>
+          <ul id="modalReceitaIngredientes" class="lista-receita"></ul>
+
+          <h4>Modo de preparo</h4>
+          <ol id="modalReceitaPreparo" class="lista-preparo"></ol>
+
+          <div class="produto-relacionado-receita" id="produtoRelacionadoReceita"></div>
+        </div>
+      </div>
+    </div>
 
     <section id="localizacao" class="secao secao-clara">
       <div class="container">
@@ -447,6 +490,7 @@
   </footer>
 
   <script src="assets/js/produtos.js"></script>
+  <script src="assets/js/receitas.js"></script>
   <script src="assets/js/script.js"></script>
 </body>
 </html>
