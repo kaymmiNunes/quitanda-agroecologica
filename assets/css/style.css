@@ -1113,7 +1113,6 @@ section {
     height: 320px;
     min-height: 320px;
   }
-}
 
 @media (max-width: 560px) {
   .secao {
