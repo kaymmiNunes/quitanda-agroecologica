@@ -18,8 +18,12 @@
 <body>
   <header class="cabecalho">
     <nav class="navbar">
-      <a href="#inicio" class="logo">
-        Quitanda <span>Agroecológica</span>
+      <a href="#inicio" class="logo logo-com-imagem">
+        <img 
+          src="assets/img/logos/logo-quitandas-da-borborema.png" 
+          alt="Logo Quitandas da Borborema"
+        >
+        <span>Quitandas da Borborema</span>
       </a>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
@@ -29,8 +33,12 @@
       <ul class="menu" id="menu">
         <li><a href="#inicio">Início</a></li>
         <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#produtos">Produtos</a></li>
         <li><a href="#agroecologia">Agroecologia</a></li>
+        <li><a href="#cooperativa">Cooperativa</a></li>
+        <li><a href="#produtos-rocado">Produtos do Roçado</a></li>
+        <li><a href="#sementes">Sementes da Paixão</a></li>
+        <li><a href="#receitas">Receitas</a></li>
+        <li><a href="#produtos">Catálogo</a></li>
         <li><a href="#localizacao">Localização</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
@@ -38,28 +46,42 @@
   </header>
 
   <main>
-    <section id="inicio" class="hero">
-      <div class="hero-conteudo">
-        <p class="tagline">Produtos naturais direto para sua mesa</p>
+    <section id="inicio" class="hero hero-com-video">
+      <video 
+        class="hero-video" 
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        poster="assets/img/hero/banner-home-produtos-do-rocado.jpg"
+      >
+        <source src="assets/video/video-background-site-principal.mp4" type="video/mp4">
+      </video>
 
-        <h1>Alimentação saudável, produção local e consumo consciente</h1>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-conteudo">
+        <p class="tagline">Produtos agroecológicos do roçado</p>
+
+        <h1>Alimentos saudáveis, agricultura familiar e consumo consciente</h1>
 
         <p>
-          Conheça uma quitanda agroecológica de Remígio comprometida com a qualidade dos alimentos,
-          o cuidado com a comunidade e a valorização de pequenos produtores locais.
+          Conheça a Quitanda Agroecológica de Remígio, um espaço que aproxima a comunidade
+          de alimentos frescos, produtos regionais e práticas de produção que valorizam
+          a terra, as famílias agricultoras e a sustentabilidade.
         </p>
 
         <div class="botoes-hero">
-          <a href="#produtos" class="btn btn-principal">Ver produtos</a>
-          <a href="#contato" class="btn btn-secundario">Entrar em contato</a>
+          <a href="#produtos-rocado" class="btn btn-principal">Conhecer produtos</a>
+          <a href="#receitas" class="btn btn-secundario">Ver receitas</a>
         </div>
       </div>
 
       <div class="hero-card">
-        <h2>🌱 Frescor e qualidade</h2>
+        <h2>🌱 Direto da agricultura familiar</h2>
         <p>
-          Frutas, verduras, legumes e produtos naturais selecionados para uma rotina
-          mais saudável e sustentável.
+          Frutas, hortaliças, sementes, derivados do milho, conservas e produtos artesanais
+          produzidos com cuidado e identidade regional.
         </p>
       </div>
     </section>
@@ -191,6 +213,209 @@
       </div>
     </section>
 
+    <section id="cooperativa" class="secao secao-cooperativa">
+  <div class="container">
+    <div class="conteudo-duplo">
+      <div>
+        <div class="titulo-secao alinhado-esquerda">
+          <span>Organização comunitária</span>
+          <h2>Cooperativa e fortalecimento da agricultura familiar</h2>
+        </div>
+
+        <p>
+          Por trás dos produtos comercializados na quitanda está o trabalho de famílias
+          agricultoras, associações comunitárias e iniciativas coletivas que buscam
+          fortalecer a produção agroecológica, gerar renda e ampliar o acesso da
+          comunidade a alimentos saudáveis.
+        </p>
+
+        <p>
+          A cooperativa contribui para organizar a produção, facilitar o escoamento dos
+          alimentos e valorizar o trabalho de homens, mulheres e jovens do campo.
+        </p>
+
+        <ul class="lista-beneficios">
+          <li>Apoia famílias agricultoras da região.</li>
+          <li>Fortalece a comercialização direta e justa.</li>
+          <li>Valoriza alimentos produzidos sem veneno.</li>
+          <li>Contribui para segurança alimentar e renda local.</li>
+        </ul>
+      </div>
+
+      <div class="imagem-destaque">
+        <img 
+          src="assets/img/institucional/fotos/foto-familia-de-remigio.jpg" 
+          alt="Família agricultora vinculada à produção agroecológica"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="produtos-rocado" class="secao secao-verde">
+  <div class="container">
+    <div class="titulo-secao">
+      <span>Produtos do Roçado</span>
+      <h2>Alimentos regionais beneficiados pela agricultura familiar</h2>
+      <p>
+        Os Produtos do Roçado valorizam ingredientes tradicionais da região, como milho,
+        sementes, conservas e doces artesanais, mantendo viva a cultura alimentar local.
+      </p>
+    </div>
+
+    <div class="cards-destaque">
+      <article class="card-destaque">
+        <img 
+          src="assets/img/produtos/produtos-do-rocado/flocao-da-paixao-embalagem-expositora.jpg" 
+          alt="Flocão da Paixão"
+        >
+        <div>
+          <span>Milho agroecológico</span>
+          <h3>Flocão da Paixão</h3>
+          <p>
+            Produto à base de milho, indicado para o preparo de cuscuz e outras receitas
+            regionais. Representa a transformação da produção local em alimento acessível,
+            prático e ligado à cultura nordestina.
+          </p>
+          <a href="#receitas" class="link-card">Ver receitas com flocão</a>
+        </div>
+      </article>
+
+      <article class="card-destaque">
+        <img 
+          src="assets/img/produtos/produtos-do-rocado/xerem-da-paixao-detalhe-da-embalagem.jpg" 
+          alt="Xerém da Paixão"
+        >
+        <div>
+          <span>Produto regional</span>
+          <h3>Xerém da Paixão</h3>
+          <p>
+            Derivado do milho, utilizado em preparações doces e salgadas. É um produto
+            que ajuda a valorizar os saberes culinários tradicionais e o beneficiamento
+            da produção agroecológica.
+          </p>
+          <a href="#receitas" class="link-card">Ver receita de mungunzá</a>
+        </div>
+      </article>
+
+      <article class="card-destaque">
+        <img 
+          src="assets/img/produtos/produtos-do-rocado/conserva-de-pimenta-detalhe.jpg" 
+          alt="Conserva de pimenta"
+        >
+        <div>
+          <span>Produto artesanal</span>
+          <h3>Conserva de pimenta</h3>
+          <p>
+            Produto artesanal usado como acompanhamento em refeições. Deve ser consumido
+            com moderação por pessoas com sensibilidade gástrica.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="sementes" class="secao">
+  <div class="container">
+    <div class="conteudo-duplo invertido">
+      <div class="imagem-destaque">
+        <img 
+          src="assets/img/hero/banner-home-hortalicas-frescas.jpg" 
+          alt="Hortaliças frescas da produção agroecológica"
+        >
+      </div>
+
+      <div>
+        <div class="titulo-secao alinhado-esquerda">
+          <span>Sementes da Paixão</span>
+          <h2>Memória, autonomia e diversidade no campo</h2>
+        </div>
+
+        <p>
+          As Sementes da Paixão representam a preservação de variedades tradicionais,
+          cultivadas e cuidadas por famílias agricultoras. Elas carregam história,
+          identidade, cultura alimentar e autonomia para as comunidades rurais.
+        </p>
+
+        <p>
+          Valorizar essas sementes é também valorizar a soberania alimentar, a produção
+          diversificada e o respeito aos ciclos da natureza.
+        </p>
+
+        <div class="box-informativo">
+          <strong>Importância social:</strong>
+          as sementes tradicionais fortalecem a permanência das famílias no campo,
+          reduzem a dependência de insumos externos e preservam saberes comunitários.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="receitas" class="secao secao-clara">
+  <div class="container">
+    <div class="titulo-secao">
+      <span>Receitas</span>
+      <h2>Sabores da agricultura familiar</h2>
+      <p>
+        Receitas que utilizam produtos regionais e agroecológicos, aproximando o público
+        da cultura alimentar local.
+      </p>
+    </div>
+
+        <div class="receitas-grid">
+          <article class="receita-card">
+            <img 
+              src="assets/img/receitas/mungunza-doce/receita-mungunza-doce-capa.jpg" 
+              alt="Mungunzá doce da Paixão"
+            >
+            <div>
+              <span>Receita regional</span>
+              <h3>Mungunzá doce da Paixão</h3>
+              <p>
+                Receita feita com mungunzá da paixão, leite de coco, leite de vaca,
+                leite condensado, canela, água, açúcar e uma pitada de sal.
+              </p>
+              <a href="#produtos-rocado" class="link-card">Produto relacionado: Xerém/Mungunzá</a>
+            </div>
+          </article>
+
+          <article class="receita-card">
+            <img 
+              src="assets/img/receitas/mungunza-salgado/receita-mungunza-salgado-capa.jpg" 
+              alt="Mungunzá salgado da Paixão"
+            >
+            <div>
+              <span>Receita regional</span>
+              <h3>Mungunzá salgado da Paixão</h3>
+              <p>
+                Preparação simples e nutritiva feita com mungunzá, água, leite de coco,
+                leite de vaca e sal a gosto.
+              </p>
+              <a href="#produtos-rocado" class="link-card">Produto relacionado: Mungunzá da Paixão</a>
+            </div>
+          </article>
+
+          <article class="receita-card">
+            <img 
+              src="assets/img/receitas/broa-de-fuba/receita-broa-de-fuba-capa.jpg" 
+              alt="Broa de fubá da Paixão"
+            >
+            <div>
+              <span>Receita com milho</span>
+              <h3>Broa de fubá da Paixão</h3>
+              <p>
+                Receita com fubá da paixão, manteiga, açúcar, ovos, farinha de trigo,
+                fermento e erva-doce.
+              </p>
+              <a href="#produtos-rocado" class="link-card">Produto relacionado: Fubá da Paixão</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="localizacao" class="secao secao-clara">
       <div class="container">
         <div class="titulo-secao">
@@ -227,7 +452,7 @@
       <div class="mapa-container">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254.77578636865826!2d-35.793564334208135!3d-6.966248162470975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ac2c2f33f046fd%3A0x797d70934aafff49!2sR.%20Bento%20Vit%C3%B3rio%2C%2013%20-%20Remigio%2C%20Rem%C3%ADgio%20-%20PB%2C%2058398-000!5e0!3m2!1spt-BR!2sbr!4v1780444626171!5m2!1spt-BR!2sbr"
-          width="100%
+          width="100%"
           height="350"
           style="border:0;"
           allowfullscreen=""
