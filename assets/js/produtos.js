@@ -89,24 +89,25 @@ const produtos = [
     },
     usoTradicional:
       "Tradicionalmente consumida in natura, em sucos, saladas de frutas, sobremesas e preparações caseiras. Seu consumo deve estar associado a uma alimentação equilibrada."
-  },
-  {
-    id: 7,
-    nome: "Alface",
-    categoria: "hortalicas",
-    imagem: "assets/img/produtos/hortalicas/alface-crespa.jpg",
-    descricao:
-      "Hortaliça folhosa leve e refrescante, muito utilizada em saladas e acompanhamentos.",
-    nutricional: {
-      "Porção de referência": "100 g",
-      "Valor energético": "15 kcal",
-      "Carboidratos": "2,9 g",
-      "Proteínas": "1,4 g",
-      "Gorduras totais": "0,2 g",
-      "Fibras": "1,3 g",
-      "Destaques": "Baixo valor calórico e boa presença de água"
     },
-    usoTradicional: ""
+    {
+  id: 7,
+  nome: "Laranja tangerina",
+  categoria: "frutas",
+  imagem: "assets/img/produtos/frutas/laranja-cravo.jpg",
+  descricao:
+    "Fruta cítrica de sabor adocicado, aroma marcante e fácil consumo, muito apreciada in natura. Também pode ser utilizada em sucos, sobremesas, saladas e preparações caseiras.",
+  nutricional: {
+    "Porção de referência": "100 g",
+    "Valor energético": "53 kcal",
+    "Carboidratos": "13,3 g",
+    "Proteínas": "0,8 g",
+    "Gorduras totais": "0,3 g",
+    "Fibras": "1,8 g",
+    "Destaques": "Fonte de vitamina C, água, fibras e aroma cítrico natural"
+  },
+  usoTradicional:
+    "Tradicionalmente consumida in natura, especialmente por ser fácil de descascar e ter sabor adocicado. Também pode ser usada em sucos, doces, geleias, bolos e receitas caseiras."
   },
   {
     id: 8,
@@ -360,23 +361,22 @@ const produtos = [
       "Usado em preparações caseiras, bolos, massas, refeições e receitas regionais."
   },
   {
-  id: 21,
-  nome: "Laranja tangerina",
-  categoria: "frutas",
-  imagem: "assets/img/produtos/frutas/laranja-cravo.jpg",
-  descricao:
-    "Fruta cítrica de sabor adocicado, aroma marcante e fácil consumo, muito apreciada in natura. Também pode ser utilizada em sucos, sobremesas, saladas e preparações caseiras.",
-  nutricional: {
-    "Porção de referência": "100 g",
-    "Valor energético": "53 kcal",
-    "Carboidratos": "13,3 g",
-    "Proteínas": "0,8 g",
-    "Gorduras totais": "0,3 g",
-    "Fibras": "1,8 g",
-    "Destaques": "Fonte de vitamina C, água, fibras e aroma cítrico natural"
-  },
-  usoTradicional:
-    "Tradicionalmente consumida in natura, especialmente por ser fácil de descascar e ter sabor adocicado. Também pode ser usada em sucos, doces, geleias, bolos e receitas caseiras."
+    id: 21,
+    nome: "Alface",
+    categoria: "hortalicas",
+    imagem: "assets/img/produtos/hortalicas/alface-crespa.jpg",
+    descricao:
+      "Hortaliça folhosa leve e refrescante, muito utilizada em saladas e acompanhamentos.",
+    nutricional: {
+      "Porção de referência": "100 g",
+      "Valor energético": "15 kcal",
+      "Carboidratos": "2,9 g",
+      "Proteínas": "1,4 g",
+      "Gorduras totais": "0,2 g",
+      "Fibras": "1,3 g",
+      "Destaques": "Baixo valor calórico e boa presença de água"
+    },
+    usoTradicional: ""
   },
   {
   id: 26,
