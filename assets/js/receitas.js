@@ -5,7 +5,7 @@ const receitas = [
     autoria: "Anilda Batista",
     origem: "Assentamento Oziel Pereira - Remígio",
     categoria: "Receita com Fubá da Paixão",
-    imagem: "assets/img/receitas/cartilha/cuscuz-da-paixao.jpg",
+    imagem: "assets/img/receitas/cuscuz.png",
     produtoRelacionado: "Fubá da Paixão",
     linkProduto: "#produtos-rocado",
     descricao:
@@ -30,7 +30,7 @@ const receitas = [
     autoria: "Julya Rachel",
     origem: "Laboratório de Tecnologia de Produtos Agropecuários - CCA/UFPB",
     categoria: "Receita com Fubá da Paixão",
-    imagem: "assets/img/receitas/cartilha/bolo-de-fuba-julya-rachel.jpg",
+    imagem: "assets/img/receitas/bolo-fuba.png",
     produtoRelacionado: "Fubá da Paixão",
     linkProduto: "#produtos-rocado",
     descricao:
@@ -69,7 +69,7 @@ const receitas = [
     autoria: "Karla Carvalho Lindoso",
     origem: "Alquimia de Minas",
     categoria: "Receita com Fubá da Paixão",
-    imagem: "assets/img/receitas/cartilha/bolo-de-banana-com-fuba.jpg",
+    imagem: "assets/img/receitas/bolo-banana.png",
     produtoRelacionado: "Fubá da Paixão",
     linkProduto: "#produtos-rocado",
     descricao:
@@ -100,7 +100,7 @@ const receitas = [
     autoria: "Julya Rachel",
     origem: "Laboratório de Tecnologia de Produtos Agropecuários - CCA/UFPB",
     categoria: "Receita com Fubá da Paixão",
-    imagem: "assets/img/receitas/cartilha/broa-de-fuba-julya-rachel.jpg",
+    imagem: "assets/img/receitas/broa-fuba.png",
     produtoRelacionado: "Fubá da Paixão",
     linkProduto: "#produtos-rocado",
     descricao:
@@ -131,7 +131,7 @@ const receitas = [
     autoria: "Euzébio Cavalcanti",
     origem: "Assentamento Queimadas - Remígio",
     categoria: "Receita com Fubá da Paixão",
-    imagem: "assets/img/receitas/cartilha/broa-da-paixao-euzebio.jpg",
+    imagem: "assets/img/receitas/broa-paixao.png",
     produtoRelacionado: "Fubá da Paixão",
     linkProduto: "#produtos-rocado",
     descricao:
@@ -163,7 +163,7 @@ const receitas = [
     autoria: "Márcia Targino",
     origem: "Laboratório de Tecnologia de Produtos Agropecuários - CCA/UFPB",
     categoria: "Receita com Fubá da Paixão",
-    imagem: "assets/img/receitas/cartilha/pao-de-fuba-marcia.jpg",
+    imagem: "assets/img/receitas/pao-fuba.png",
     produtoRelacionado: "Fubá da Paixão",
     linkProduto: "#produtos-rocado",
     descricao:
@@ -193,7 +193,7 @@ const receitas = [
     autoria: "Francisca Aparecida (Cida) Fragoso Ramos",
     origem: "Sítio Jabuticaba - Arara",
     categoria: "Receita com Munguzá da Paixão",
-    imagem: "assets/img/receitas/cartilha/munguza-salgado-cida.jpg",
+    imagem: "assets/img/receitas/munguza-salgado.png",
     produtoRelacionado: "Munguzá da Paixão",
     linkProduto: "#produtos-rocado",
     descricao:
@@ -219,7 +219,7 @@ const receitas = [
     autoria: "Maria Elizete Andrade da Silva",
     origem: "Areia",
     categoria: "Receita com Munguzá da Paixão",
-    imagem: "assets/img/receitas/cartilha/munguza-doce-maria-elizete.jpg",
+    imagem: "assets/img/receitas/munguza-doce.png",
     produtoRelacionado: "Munguzá da Paixão",
     linkProduto: "#produtos-rocado",
     descricao:
@@ -250,7 +250,7 @@ const receitas = [
     autoria: "Elizabeth Ananias",
     origem: "Comunidade Xique-Xique - Remígio",
     categoria: "Receita com Xerém da Paixão",
-    imagem: "assets/img/receitas/cartilha/xerem-elizabeth.jpg",
+    imagem: "assets/img/receitas/xerem.png",
     produtoRelacionado: "Xerém da Paixão",
     linkProduto: "#produtos-rocado",
     descricao:
@@ -275,7 +275,7 @@ const receitas = [
     autoria: "Anilda Batista",
     origem: "Assentamento Oziel Pereira - Remígio",
     categoria: "Receita com Fubá da Paixão",
-    imagem: "assets/img/receitas/cartilha/tareco-da-paixao-anilda.jpg",
+    imagem: "assets/img/receitas/tareco.png",
     produtoRelacionado: "Fubá da Paixão",
     linkProduto: "#produtos-rocado",
     descricao:
@@ -303,7 +303,7 @@ const receitas = [
     autoria: "Francisca Aparecida (Cida) Fragoso Ramos",
     origem: "Sítio Jabuticaba - Arara",
     categoria: "Receita com Xerém da Paixão",
-    imagem: "assets/img/receitas/cartilha/xerem-cida.jpg",
+    imagem: "assets/img/receitas/xerem-da-paixao.png",
     produtoRelacionado: "Xerém da Paixão",
     linkProduto: "#produtos-rocado",
     descricao:
@@ -328,7 +328,7 @@ const receitas = [
     autoria: "Anilda Batista",
     origem: "Assentamento Oziel Pereira - Remígio",
     categoria: "Receita com Fubá da Paixão",
-    imagem: "assets/img/receitas/cartilha/broa-de-milho-anilda.jpg",
+    imagem: "assets/img/receitas/broa-de-milho.png",
     produtoRelacionado: "Fubá da Paixão",
     linkProduto: "#produtos-rocado",
     descricao:
@@ -357,7 +357,7 @@ const receitas = [
     autoria: "Anilda Batista",
     origem: "Assentamento Oziel Pereira - Remígio",
     categoria: "Receita com Xerém da Paixão",
-    imagem: "assets/img/receitas/cartilha/bolo-de-xerem-anilda.jpg",
+    imagem: "assets/img/receitas/bolo-xerem.png",
     produtoRelacionado: "Xerém da Paixão",
     linkProduto: "#produtos-rocado",
     descricao:
@@ -384,7 +384,7 @@ const receitas = [
     autoria: "Karla Carvalho Lindoso",
     origem: "Alquimia de Minas",
     categoria: "Receita com Fubá da Paixão",
-    imagem: "assets/img/receitas/cartilha/bolo-de-fuba-karla.jpg",
+    imagem: "assets/img/receitas/bolo-de-fuba.png",
     produtoRelacionado: "Fubá da Paixão",
     linkProduto: "#produtos-rocado",
     descricao:
