@@ -10,9 +10,11 @@ const IMAGEM_FALLBACK_RECEITA = "assets/img/receitas/geral/prato-agroecologico-s
 
 const LIMITE_PRODUTOS_MOBILE = 6;
 const CONSULTA_MOBILE_PRODUTOS = window.matchMedia("(max-width: 900px)");
+const CONSULTA_REDUCAO_MOVIMENTO = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 let categoriaAtualProdutos = "todos";
 let produtosExpandidosMobile = false;
+let observadorAnimacoes = null;
 
 const elementos = {
   menuToggle: document.getElementById("menuToggle"),
@@ -127,13 +129,17 @@ function inicializarMenuMobile() {
 
   if (!menuToggle || !menu) return;
 
+  menuToggle.setAttribute("aria-expanded", "false");
+
   menuToggle.addEventListener("click", () => {
-    menu.classList.toggle("ativo");
+    const menuAberto = menu.classList.toggle("ativo");
+    menuToggle.setAttribute("aria-expanded", String(menuAberto));
   });
 
   linksMenu.forEach((link) => {
     link.addEventListener("click", () => {
       menu.classList.remove("ativo");
+      menuToggle.setAttribute("aria-expanded", "false");
     });
   });
 }
@@ -222,7 +228,70 @@ function configurarHistoricoDoSite() {
 
 
 /* =========================================================
-   5. CATÁLOGO DE PRODUTOS
+   5. ANIMAÇÕES DE ENTRADA
+========================================================= */
+
+function prepararAnimacaoElemento(elemento) {
+  if (!elemento) return;
+
+  elemento.classList.add("revelar");
+
+  if (CONSULTA_REDUCAO_MOVIMENTO.matches) {
+    elemento.classList.add("visivel");
+    return;
+  }
+
+  if (observadorAnimacoes) {
+    observadorAnimacoes.observe(elemento);
+  }
+}
+
+function inicializarAnimacoesDeEntrada() {
+  const seletores = [
+    ".titulo-secao",
+    ".sobre-grid > *",
+    ".agro-grid > *",
+    ".conteudo-duplo > *",
+    ".info-card",
+    ".missao-card",
+    ".catalogo-card",
+    ".receita-card",
+    ".contato-container > *"
+  ];
+
+  const elementosAnimados = document.querySelectorAll(seletores.join(","));
+
+  if (CONSULTA_REDUCAO_MOVIMENTO.matches) {
+    elementosAnimados.forEach((elemento) => {
+      elemento.classList.add("revelar", "visivel");
+    });
+
+    return;
+  }
+
+  observadorAnimacoes = new IntersectionObserver(
+    (entradas) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add("visivel");
+          observadorAnimacoes.unobserve(entrada.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: "0px 0px -60px 0px"
+    }
+  );
+
+  elementosAnimados.forEach((elemento) => {
+    prepararAnimacaoElemento(elemento);
+  });
+}
+
+
+/* =========================================================
+   6. CATÁLOGO DE PRODUTOS
 ========================================================= */
 
 function estaEmTelaMobileProdutos() {
@@ -303,6 +372,7 @@ function renderizarProdutos(categoria = categoriaAtualProdutos) {
     `;
 
     catalogoProdutos.appendChild(card);
+    prepararAnimacaoElemento(card);
   });
 
   atualizarBotaoVerMaisProdutos(produtosFiltrados.length);
@@ -364,7 +434,7 @@ function inicializarCliqueProdutos() {
 
 
 /* =========================================================
-   6. MODAL DE PRODUTOS
+   7. MODAL DE PRODUTOS
 ========================================================= */
 
 function abrirDetalhesProduto(idProduto) {
@@ -495,7 +565,7 @@ function inicializarEventosModalProduto() {
 
 
 /* =========================================================
-   7. RECEITAS
+   8. RECEITAS
 ========================================================= */
 
 function renderizarReceitas() {
@@ -543,6 +613,7 @@ function renderizarReceitas() {
     `;
 
     listaReceitas.appendChild(card);
+    prepararAnimacaoElemento(card);
   });
 }
 
@@ -563,7 +634,7 @@ function inicializarCliqueReceitas() {
 
 
 /* =========================================================
-   8. MODAL DE RECEITAS
+   9. MODAL DE RECEITAS
 ========================================================= */
 
 function abrirReceita(idReceita) {
@@ -656,7 +727,7 @@ function inicializarEventosModalReceita() {
 
 
 /* =========================================================
-   9. EVENTOS GLOBAIS
+   10. EVENTOS GLOBAIS
 ========================================================= */
 
 function inicializarEventosGlobais() {
@@ -669,7 +740,7 @@ function inicializarEventosGlobais() {
 
 
 /* =========================================================
-   10. INICIALIZAÇÃO
+   11. INICIALIZAÇÃO
 ========================================================= */
 
 function inicializarSite() {
@@ -684,6 +755,7 @@ function inicializarSite() {
   inicializarEventosModalProduto();
 
   renderizarReceitas();
+  inicializarAnimacoesDeEntrada();
   inicializarCliqueReceitas();
   inicializarEventosModalReceita();
 

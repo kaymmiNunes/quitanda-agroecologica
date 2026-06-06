@@ -1197,3 +1197,177 @@ section {
     width: 100%;
   }
 }
+
+/* =========================================================
+   12. ANIMAÇÕES E TRANSIÇÕES
+========================================================= */
+
+@keyframes aparecerSuave {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes subirSuave {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes abrirModal {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes abrirMenuMobile {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Elementos revelados com JavaScript */
+.revelar {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.revelar.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero */
+.hero-com-video .hero-conteudo {
+  animation: subirSuave 0.9s ease both;
+}
+
+.hero-com-video .hero-card {
+  animation: subirSuave 1s ease 0.15s both;
+}
+
+/* Menu mobile */
+@media (max-width: 900px) {
+  .menu.ativo {
+    animation: abrirMenuMobile 0.28s ease both;
+  }
+}
+
+/* Modais */
+.modal-produto.ativo,
+.modal-receita.ativo {
+  animation: aparecerSuave 0.25s ease both;
+}
+
+.modal-produto.ativo .modal-conteudo,
+.modal-receita.ativo .modal-receita-conteudo {
+  animation: abrirModal 0.32s ease both;
+}
+
+/* Botões */
+.btn {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Cards */
+.catalogo-card,
+.receita-card,
+.info-card,
+.missao-card,
+.card-destaque,
+.imagem-destaque {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.catalogo-card:hover,
+.receita-card:hover,
+.card-destaque:hover,
+.info-card:hover,
+.missao-card:hover {
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+}
+
+/* Imagens dos cards */
+.catalogo-card img,
+.receita-card img,
+.card-destaque img {
+  transition: transform 0.45s ease;
+}
+
+.catalogo-card:hover img,
+.receita-card:hover img,
+.card-destaque:hover img {
+  transform: scale(1.04);
+}
+
+/* Links */
+.menu a,
+.link-card,
+.rodape a {
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* Acessibilidade: reduz animações caso o usuário prefira menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .revelar {
+    opacity: 1;
+    transform: none;
+  }
+}
