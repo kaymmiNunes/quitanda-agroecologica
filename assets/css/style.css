@@ -1019,6 +1019,7 @@ section {
   .menu-toggle {
     display: block;
   }
+  
 
   .menu {
     position: absolute;
@@ -1081,7 +1082,8 @@ section {
 
   .imagem-destaque,
   .imagem-destaque img {
-    min-height: 300px;
+   min-height: 360px;
+  }
   }
 
   .card-destaque img,
@@ -1118,6 +1120,10 @@ section {
     padding: 60px 0;
   }
 
+  .imagem-destaque img {
+    min-width: 100%;
+  }
+
   .logo-com-imagem span {
     display: none;
   }
@@ -1140,6 +1146,7 @@ section {
 
   .btn {
     width: 100%;
+    margin: 0 0 3rem;
   }
 
   .produtos-grid,
