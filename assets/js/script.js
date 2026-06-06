@@ -22,6 +22,9 @@ const elementos = {
   linksMenu: document.querySelectorAll(".menu a"),
   anoAtual: document.getElementById("anoAtual"),
 
+  musicaSite: document.getElementById("musicaSite"),
+  botaoAudio: document.getElementById("botaoAudio"),
+
   catalogoProdutos: document.getElementById("catalogoProdutos"),
   botoesFiltro: document.querySelectorAll(".filtro-btn"),
   controleVerMaisProdutos: document.getElementById("controleVerMaisProdutos"),
@@ -730,6 +733,56 @@ function inicializarEventosModalReceita() {
    10. EVENTOS GLOBAIS
 ========================================================= */
 
+function inicializarControleAudio() {
+  const { musicaSite, botaoAudio } = elementos;
+
+  if (!musicaSite || !botaoAudio) return;
+
+  musicaSite.volume = 0.25;
+
+  function marcarAudioTocando() {
+    botaoAudio.classList.add("ativo");
+    botaoAudio.textContent = "❚❚";
+    botaoAudio.setAttribute("aria-label", "Pausar música do site");
+  }
+
+  function marcarAudioPausado() {
+    botaoAudio.classList.remove("ativo");
+    botaoAudio.textContent = "♫";
+    botaoAudio.setAttribute("aria-label", "Tocar música do site");
+  }
+
+  async function tentarTocarAudio() {
+    try {
+      await musicaSite.play();
+      marcarAudioTocando();
+    } catch (erro) {
+      marcarAudioPausado();
+      console.warn(
+        "O navegador bloqueou o autoplay com som. O usuário precisa tocar no botão de áudio.",
+        erro
+      );
+    }
+  }
+
+  tentarTocarAudio();
+
+  botaoAudio.addEventListener("click", async () => {
+    try {
+      if (musicaSite.paused) {
+        await musicaSite.play();
+        marcarAudioTocando();
+      } else {
+        musicaSite.pause();
+        marcarAudioPausado();
+      }
+    } catch (erro) {
+      console.warn("Não foi possível controlar o áudio.", erro);
+    }
+  });
+}
+
+
 function inicializarEventosGlobais() {
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && existeDescricaoAberta()) {
@@ -747,6 +800,7 @@ function inicializarSite() {
   atualizarAnoRodape();
 
   inicializarMenuMobile();
+  inicializarControleAudio()
 
   renderizarProdutos();
   inicializarFiltrosProdutos();
