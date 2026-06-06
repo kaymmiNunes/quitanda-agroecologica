@@ -1373,37 +1373,68 @@ section {
 }
 
 /* =========================================================
-   CONTROLE DE ÁUDIO
+   BOTÕES FLUTUANTES
 ========================================================= */
 
-.controle-audio {
+.botoes-flutuantes {
   position: fixed;
   right: 1.2rem;
   bottom: 1.2rem;
   z-index: 2500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
 }
 
-.botao-audio {
+.controle-audio {
+  display: flex;
+}
+
+.botao-audio,
+.botao-whatsapp-flutuante {
   width: 52px;
   height: 52px;
   border: none;
   border-radius: 50%;
-  background-color: var(--cor-primaria);
   color: var(--cor-clara);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
   cursor: pointer;
   box-shadow: var(--sombra);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition:
     transform 0.25s ease,
     background-color 0.25s ease,
     box-shadow 0.25s ease;
 }
 
-.botao-audio:hover {
+.botao-audio {
+  background-color: var(--cor-primaria);
+}
+
+.botao-whatsapp-flutuante {
+  background-color: #25d366;
+}
+
+.botao-whatsapp-flutuante img {
+  width: 50%;
+}
+
+.botao-audio:hover,
+.botao-whatsapp-flutuante:hover {
   transform: translateY(-3px);
-  background-color: var(--cor-primaria-escura);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.botao-audio:hover {
+  background-color: var(--cor-primaria-escura);
+}
+
+.botao-whatsapp-flutuante:hover {
+  background-color: #1ebe5d;
 }
 
 .botao-audio.ativo {
@@ -1433,12 +1464,14 @@ section {
 }
 
 @media (max-width: 560px) {
-  .controle-audio {
+  .botoes-flutuantes {
     right: 1rem;
     bottom: 1rem;
+    gap: 0.7rem;
   }
 
-  .botao-audio {
+  .botao-audio,
+  .botao-whatsapp-flutuante {
     width: 48px;
     height: 48px;
     font-size: 1.25rem;

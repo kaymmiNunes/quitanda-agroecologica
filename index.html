@@ -427,21 +427,38 @@
     </p>
   </footer>
 
-  <div class="controle-audio" id="controleAudio">
-  <audio id="musicaSite" autoplay loop preload="auto">
-    <source src="assets/audio/musica-fundo.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio HTML5.
-  </audio>
+  <div class="botoes-flutuantes">
+    <a 
+      href="https://wa.me/5583998966635" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="botao-whatsapp-flutuante"
+      aria-label="Chamar a quitanda no WhatsApp"
+      title="Chamar no WhatsApp"
+    >
+      <img 
+        src="assets/img/logos/whatsapp-icon.png" 
+        alt="Ícone do WhatsApp"
+      >
+    </a>
 
-  <button 
-    type="button" 
-    class="botao-audio" 
-    id="botaoAudio"
-    aria-label="Tocar música do site"
-  >
-    ♫
-  </button>
-</div>
+    <div class="controle-audio" id="controleAudio">
+      <audio id="musicaSite" autoplay loop preload="auto">
+        <source src="assets/audio/musica-site.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio HTML5.
+      </audio>
+
+      <button 
+        type="button" 
+        class="botao-audio" 
+        id="botaoAudio"
+        aria-label="Tocar música do site"
+        title="Tocar música"
+      >
+        ♫
+      </button>
+    </div>
+  </div>
 
   <script src="assets/js/produtos.js"></script>
   <script src="assets/js/receitas.js"></script>
