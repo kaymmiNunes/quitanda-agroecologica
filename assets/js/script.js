@@ -187,7 +187,6 @@ const modalReceitaAutoria = document.getElementById("modalReceitaAutoria");
 const modalReceitaDescricao = document.getElementById("modalReceitaDescricao");
 const modalReceitaIngredientes = document.getElementById("modalReceitaIngredientes");
 const modalReceitaPreparo = document.getElementById("modalReceitaPreparo");
-const produtoRelacionadoReceita = document.getElementById("produtoRelacionadoReceita");
 
 function renderizarReceitas() {
   if (!listaReceitas || typeof receitas === "undefined") return;
@@ -218,9 +217,15 @@ function renderizarReceitas() {
         </p>
 
         <div class="receita-acoes">
-          <button class="btn btn-principal" onclick="abrirReceita('${receita.id}')">
+          <button 
+            type="button" 
+            class="btn btn-principal btn-ver-receita" 
+            data-receita-id="${receita.id}"
+          >
             Ver receita completa
           </button>
+        </div>
+      </div>
     `;
 
     listaReceitas.appendChild(card);
@@ -232,53 +237,65 @@ function abrirReceita(id) {
 
   if (!receita || !modalReceita) return;
 
-  modalReceitaImagem.src = receita.imagem;
-  modalReceitaImagem.alt = receita.nome;
+  if (modalReceitaImagem) {
+    modalReceitaImagem.src = receita.imagem;
+    modalReceitaImagem.alt = receita.nome;
 
-  modalReceitaImagem.onerror = () => {
-    modalReceitaImagem.src = "assets/img/receitas/geral/prato-agroecologico-servido.jpg";
-  };
+    modalReceitaImagem.onerror = () => {
+      modalReceitaImagem.src = "assets/img/receitas/geral/prato-agroecologico-servido.jpg";
+    };
+  }
 
-  modalReceitaCategoria.textContent = receita.categoria;
-  modalReceitaNome.textContent = receita.nome;
+  if (modalReceitaCategoria) {
+    modalReceitaCategoria.textContent = receita.categoria;
+  }
 
-  modalReceitaAutoria.textContent = receita.origem
-    ? `Receita de ${receita.autoria} — ${receita.origem}`
-    : `Receita de ${receita.autoria}`;
+  if (modalReceitaNome) {
+    modalReceitaNome.textContent = receita.nome;
+  }
 
-  modalReceitaDescricao.textContent = receita.descricao;
+  if (modalReceitaAutoria) {
+    modalReceitaAutoria.textContent = receita.origem
+      ? `Receita de ${receita.autoria} — ${receita.origem}`
+      : `Receita de ${receita.autoria}`;
+  }
 
-  modalReceitaIngredientes.innerHTML = "";
-  receita.ingredientes.forEach((ingrediente) => {
-    const item = document.createElement("li");
-    item.textContent = ingrediente;
-    modalReceitaIngredientes.appendChild(item);
-  });
+  if (modalReceitaDescricao) {
+    modalReceitaDescricao.textContent = receita.descricao;
+  }
 
-  modalReceitaPreparo.innerHTML = "";
-  receita.preparo.forEach((passo) => {
-    const item = document.createElement("li");
-    item.textContent = passo;
-    modalReceitaPreparo.appendChild(item);
-  });
+  if (modalReceitaIngredientes) {
+    modalReceitaIngredientes.innerHTML = "";
 
-  produtoRelacionadoReceita.innerHTML = `
-    <p>
-      <strong>Produto relacionado:</strong> ${receita.produtoRelacionado}
-    </p>
+    receita.ingredientes.forEach((ingrediente) => {
+      const item = document.createElement("li");
+      item.textContent = ingrediente;
+      modalReceitaIngredientes.appendChild(item);
+    });
+  }
 
-    <a href="${receita.linkProduto}" class="btn btn-principal">
-      Ver produto relacionado
-    </a>
-  `;
+  if (modalReceitaPreparo) {
+    modalReceitaPreparo.innerHTML = "";
 
-  const linkProduto = produtoRelacionadoReceita.querySelector("a");
-
-  linkProduto.addEventListener("click", () => {
-    modalReceita.classList.remove("ativo");
-  });
+    receita.preparo.forEach((passo) => {
+      const item = document.createElement("li");
+      item.textContent = passo;
+      modalReceitaPreparo.appendChild(item);
+    });
+  }
 
   modalReceita.classList.add("ativo");
+}
+
+if (listaReceitas) {
+  listaReceitas.addEventListener("click", (event) => {
+    const botao = event.target.closest(".btn-ver-receita");
+
+    if (!botao) return;
+
+    const idReceita = botao.dataset.receitaId;
+    abrirReceita(idReceita);
+  });
 }
 
 if (fecharModalReceita && modalReceita) {
