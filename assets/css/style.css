@@ -1216,3 +1216,34 @@ section {
     font-size: 1.6rem;
   }
 }
+
+.receita-autoria,
+.modal-receita-autoria {
+  font-weight: 700;
+  color: var(--cor-primaria);
+  margin-bottom: 0.8rem;
+}
+
+.secao-receitas-bg .receita-autoria {
+  color: var(--cor-primaria);
+}
+
+.modal-receita-autoria {
+  font-size: 1rem;
+  background-color: #eef6e8;
+  display: inline-block;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+}
+
+.receita-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.receita-acoes .btn {
+  padding: 0.75rem 1.1rem;
+  cursor: pointer;
+}

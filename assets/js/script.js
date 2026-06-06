@@ -175,16 +175,57 @@ botoesFiltro.forEach((botao) => {
 
 renderizarProdutos();
 
+const listaReceitas = document.getElementById("listaReceitas");
+
 const modalReceita = document.getElementById("modalReceita");
 const fecharModalReceita = document.getElementById("fecharModalReceita");
 
 const modalReceitaImagem = document.getElementById("modalReceitaImagem");
 const modalReceitaCategoria = document.getElementById("modalReceitaCategoria");
 const modalReceitaNome = document.getElementById("modalReceitaNome");
+const modalReceitaAutoria = document.getElementById("modalReceitaAutoria");
 const modalReceitaDescricao = document.getElementById("modalReceitaDescricao");
 const modalReceitaIngredientes = document.getElementById("modalReceitaIngredientes");
 const modalReceitaPreparo = document.getElementById("modalReceitaPreparo");
 const produtoRelacionadoReceita = document.getElementById("produtoRelacionadoReceita");
+
+function renderizarReceitas() {
+  if (!listaReceitas || typeof receitas === "undefined") return;
+
+  listaReceitas.innerHTML = "";
+
+  receitas.forEach((receita) => {
+    const card = document.createElement("article");
+    card.classList.add("receita-card");
+
+    card.innerHTML = `
+      <img 
+        src="${receita.imagem}" 
+        alt="${receita.nome}"
+        onerror="this.src='assets/img/receitas/geral/prato-agroecologico-servido.jpg'"
+      >
+
+      <div>
+        <span>${receita.categoria}</span>
+        <h3>${receita.nome}</h3>
+
+        <p class="receita-autoria">
+          Receita de ${receita.autoria}
+        </p>
+
+        <p>
+          ${receita.descricao}
+        </p>
+
+        <div class="receita-acoes">
+          <button class="btn btn-principal" onclick="abrirReceita('${receita.id}')">
+            Ver receita completa
+          </button>
+    `;
+
+    listaReceitas.appendChild(card);
+  });
+}
 
 function abrirReceita(id) {
   const receita = receitas.find((item) => item.id === id);
@@ -200,6 +241,11 @@ function abrirReceita(id) {
 
   modalReceitaCategoria.textContent = receita.categoria;
   modalReceitaNome.textContent = receita.nome;
+
+  modalReceitaAutoria.textContent = receita.origem
+    ? `Receita de ${receita.autoria} — ${receita.origem}`
+    : `Receita de ${receita.autoria}`;
+
   modalReceitaDescricao.textContent = receita.descricao;
 
   modalReceitaIngredientes.innerHTML = "";
@@ -216,25 +262,21 @@ function abrirReceita(id) {
     modalReceitaPreparo.appendChild(item);
   });
 
-  produtoRelacionadoReceita.innerHTML = "";
+  produtoRelacionadoReceita.innerHTML = `
+    <p>
+      <strong>Produto relacionado:</strong> ${receita.produtoRelacionado}
+    </p>
 
-  if (receita.produtoRelacionado && receita.linkProduto) {
-    produtoRelacionadoReceita.innerHTML = `
-      <p>
-        <strong>Produto relacionado:</strong> ${receita.produtoRelacionado}
-      </p>
+    <a href="${receita.linkProduto}" class="btn btn-principal">
+      Ver produto relacionado
+    </a>
+  `;
 
-      <a href="${receita.linkProduto}" class="btn btn-principal">
-        Ver produto relacionado
-      </a>
-    `;
+  const linkProduto = produtoRelacionadoReceita.querySelector("a");
 
-    const linkProduto = produtoRelacionadoReceita.querySelector("a");
-
-    linkProduto.addEventListener("click", () => {
-      modalReceita.classList.remove("ativo");
-    });
-  }
+  linkProduto.addEventListener("click", () => {
+    modalReceita.classList.remove("ativo");
+  });
 
   modalReceita.classList.add("ativo");
 }
@@ -252,3 +294,5 @@ if (modalReceita) {
     }
   });
 }
+
+renderizarReceitas();
