@@ -1039,3 +1039,55 @@ section {
     min-height: 260px;
   }
 }
+
+.catalogo-link-receita {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+#modalLinkReceita {
+  margin: 0.5rem 0 1.2rem;
+  text-align: center;
+}
+
+/* Fundo especial para a seção de Receitas */
+.secao-receitas-bg {
+  position: relative;
+  overflow: hidden;
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(31, 63, 41, 0.92),
+      rgba(47, 107, 63, 0.82),
+      rgba(0, 0, 0, 0.55)
+    ),
+    url("../img/receitas/geral/prato-agroecologico-servido.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--cor-clara);
+}
+
+.secao-receitas-bg .container {
+  position: relative;
+  z-index: 2;
+}
+
+.secao-receitas-bg .titulo-secao span {
+  color: var(--cor-destaque);
+}
+
+.secao-receitas-bg .titulo-secao h2 {
+  color: var(--cor-clara);
+}
+
+.secao-receitas-bg .titulo-secao p {
+  color: #e6f2e1;
+  max-width: 720px;
+  margin: 0.8rem auto 0;
+}
+
+.secao-receitas-bg .receita-card {
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(4px);
+}

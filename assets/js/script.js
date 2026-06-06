@@ -39,7 +39,9 @@ function formatarCategoria(categoria) {
     frutas: "Frutas",
     hortalicas: "Hortaliças",
     ervas: "Ervas e temperos",
-    naturais: "Produtos naturais"
+    "produtos-rocado": "Produtos do Roçado",
+    sementes: "Sementes da Paixão",
+    artesanais: "Produtos artesanais"
   };
 
   return categorias[categoria] || categoria;
@@ -50,20 +52,33 @@ function renderizarProdutos(categoria = "todos") {
 
   catalogoProdutos.innerHTML = "";
 
-  const produtosFiltrados = categoria === "todos"
-    ? produtos
-    : produtos.filter((produto) => produto.categoria === categoria);
+  const produtosFiltrados =
+    categoria === "todos"
+      ? produtos
+      : produtos.filter((produto) => produto.categoria === categoria);
 
   produtosFiltrados.forEach((produto) => {
     const card = document.createElement("article");
     card.classList.add("catalogo-card");
 
+    const botaoReceita = produto.receita
+      ? `<a href="${produto.receita}" class="link-card catalogo-link-receita">Ver receita relacionada</a>`
+      : "";
+
     card.innerHTML = `
-      <img src="${produto.imagem}" alt="${produto.nome}">
+      <img 
+        src="${produto.imagem}" 
+        alt="${produto.nome}"
+        onerror="this.src='assets/img/hero/banner-home-produtos-do-rocado.jpg'"
+      >
+
       <div class="catalogo-card-conteudo">
         <span>${formatarCategoria(produto.categoria)}</span>
         <h3>${produto.nome}</h3>
         <p>${produto.descricao}</p>
+
+        ${botaoReceita}
+
         <button class="btn btn-principal" onclick="abrirDetalhesProduto(${produto.id})">
           Ver detalhes
         </button>
@@ -81,6 +96,11 @@ function abrirDetalhesProduto(id) {
 
   modalImagem.src = produto.imagem;
   modalImagem.alt = produto.nome;
+
+  modalImagem.onerror = () => {
+    modalImagem.src = "assets/img/hero/banner-home-produtos-do-rocado.jpg";
+  };
+
   modalCategoria.textContent = formatarCategoria(produto.categoria);
   modalNome.textContent = produto.nome;
   modalDescricao.textContent = produto.descricao;
@@ -106,10 +126,30 @@ function abrirDetalhesProduto(id) {
     modalUsoTradicional.textContent = "";
   }
 
+  const linkReceitaAntigo = document.getElementById("modalLinkReceita");
+
+  if (linkReceitaAntigo) {
+    linkReceitaAntigo.remove();
+  }
+
+  if (produto.receita) {
+    const linkReceita = document.createElement("a");
+    linkReceita.href = produto.receita;
+    linkReceita.id = "modalLinkReceita";
+    linkReceita.className = "btn btn-principal";
+    linkReceita.textContent = "Ver receita relacionada";
+
+    linkReceita.addEventListener("click", () => {
+      modalProduto.classList.remove("ativo");
+    });
+
+    modalUsoTradicionalBox.insertAdjacentElement("afterend", linkReceita);
+  }
+
   modalProduto.classList.add("ativo");
 }
 
-if (fecharModal) {
+if (fecharModal && modalProduto) {
   fecharModal.addEventListener("click", () => {
     modalProduto.classList.remove("ativo");
   });
