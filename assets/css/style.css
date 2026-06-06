@@ -1001,6 +1001,18 @@ section {
    11. RESPONSIVIDADE
 ========================================================= */
 
+
+/* Botão "Ver mais produtos" no mobile */
+.catalogo-controle-mobile {
+  display: none;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.catalogo-controle-mobile.oculto {
+  display: none;
+}
+
 @media (max-width: 1100px) {
   .menu {
     gap: 0.65rem;
@@ -1114,13 +1126,23 @@ section {
     min-height: 320px;
   }
 
+    .catalogo-controle-mobile {
+    display: block;
+  }
+
+  .catalogo-controle-mobile .btn {
+    width: auto;
+    min-width: 220px;
+  }
+
 @media (max-width: 560px) {
   .secao {
     padding: 60px 0;
   }
 
   .imagem-destaque img {
-    min-width: 100%;
+    min-width: 120%;
+    zoom: 1.5;
   }
 
   .logo-com-imagem span {
@@ -1169,5 +1191,9 @@ section {
   .modal-info h3,
   .modal-receita-info h3 {
     font-size: 1.6rem;
+  }
+
+  .catalogo-controle-mobile .btn {
+    width: 100%;
   }
 }

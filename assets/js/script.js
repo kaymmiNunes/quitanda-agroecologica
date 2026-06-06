@@ -1,5 +1,5 @@
-
 "use strict";
+
 
 /* =========================================================
    1. CONSTANTES E SELETORES
@@ -7,6 +7,12 @@
 
 const IMAGEM_FALLBACK_PRODUTO = "assets/img/hero/banner-home-produtos-do-rocado.jpg";
 const IMAGEM_FALLBACK_RECEITA = "assets/img/receitas/geral/prato-agroecologico-servido.jpg";
+
+const LIMITE_PRODUTOS_MOBILE = 6;
+const CONSULTA_MOBILE_PRODUTOS = window.matchMedia("(max-width: 900px)");
+
+let categoriaAtualProdutos = "todos";
+let produtosExpandidosMobile = false;
 
 const elementos = {
   menuToggle: document.getElementById("menuToggle"),
@@ -16,6 +22,8 @@ const elementos = {
 
   catalogoProdutos: document.getElementById("catalogoProdutos"),
   botoesFiltro: document.querySelectorAll(".filtro-btn"),
+  controleVerMaisProdutos: document.getElementById("controleVerMaisProdutos"),
+  botaoVerMaisProdutos: document.getElementById("botaoVerMaisProdutos"),
 
   modalProduto: document.getElementById("modalProduto"),
   fecharModalProduto: document.getElementById("fecharModal"),
@@ -217,21 +225,52 @@ function configurarHistoricoDoSite() {
    5. CATÁLOGO DE PRODUTOS
 ========================================================= */
 
-function renderizarProdutos(categoria = "todos") {
+function estaEmTelaMobileProdutos() {
+  return CONSULTA_MOBILE_PRODUTOS.matches;
+}
+
+function filtrarProdutosPorCategoria(categoria) {
+  const listaProdutos = obterProdutos();
+
+  if (categoria === "todos") {
+    return listaProdutos;
+  }
+
+  return listaProdutos.filter((produto) => produto.categoria === categoria);
+}
+
+function atualizarBotaoVerMaisProdutos(totalProdutos) {
+  const { controleVerMaisProdutos, botaoVerMaisProdutos } = elementos;
+
+  if (!controleVerMaisProdutos || !botaoVerMaisProdutos) return;
+
+  const deveMostrarBotao =
+    estaEmTelaMobileProdutos() &&
+    !produtosExpandidosMobile &&
+    totalProdutos > LIMITE_PRODUTOS_MOBILE;
+
+  controleVerMaisProdutos.classList.toggle("oculto", !deveMostrarBotao);
+}
+
+function renderizarProdutos(categoria = categoriaAtualProdutos) {
   const { catalogoProdutos } = elementos;
 
   if (!catalogoProdutos) return;
 
-  const listaProdutos = obterProdutos();
+  categoriaAtualProdutos = categoria;
 
-  const produtosFiltrados =
-    categoria === "todos"
-      ? listaProdutos
-      : listaProdutos.filter((produto) => produto.categoria === categoria);
+  const produtosFiltrados = filtrarProdutosPorCategoria(categoriaAtualProdutos);
+
+  const deveLimitarProdutos =
+    estaEmTelaMobileProdutos() && !produtosExpandidosMobile;
+
+  const produtosParaExibir = deveLimitarProdutos
+    ? produtosFiltrados.slice(0, LIMITE_PRODUTOS_MOBILE)
+    : produtosFiltrados;
 
   limparElemento(catalogoProdutos);
 
-  produtosFiltrados.forEach((produto) => {
+  produtosParaExibir.forEach((produto) => {
     const card = document.createElement("article");
     card.classList.add("catalogo-card");
 
@@ -265,6 +304,8 @@ function renderizarProdutos(categoria = "todos") {
 
     catalogoProdutos.appendChild(card);
   });
+
+  atualizarBotaoVerMaisProdutos(produtosFiltrados.length);
 }
 
 function inicializarFiltrosProdutos() {
@@ -275,10 +316,35 @@ function inicializarFiltrosProdutos() {
       botoesFiltro.forEach((item) => item.classList.remove("ativo"));
       botao.classList.add("ativo");
 
+      produtosExpandidosMobile = false;
+
       const categoria = botao.getAttribute("data-categoria");
       renderizarProdutos(categoria);
     });
   });
+}
+
+function inicializarBotaoVerMaisProdutos() {
+  const { botaoVerMaisProdutos } = elementos;
+
+  if (!botaoVerMaisProdutos) return;
+
+  botaoVerMaisProdutos.addEventListener("click", () => {
+    produtosExpandidosMobile = true;
+    renderizarProdutos(categoriaAtualProdutos);
+  });
+
+  if (CONSULTA_MOBILE_PRODUTOS.addEventListener) {
+    CONSULTA_MOBILE_PRODUTOS.addEventListener("change", () => {
+      produtosExpandidosMobile = false;
+      renderizarProdutos(categoriaAtualProdutos);
+    });
+  } else if (CONSULTA_MOBILE_PRODUTOS.addListener) {
+    CONSULTA_MOBILE_PRODUTOS.addListener(() => {
+      produtosExpandidosMobile = false;
+      renderizarProdutos(categoriaAtualProdutos);
+    });
+  }
 }
 
 function inicializarCliqueProdutos() {
@@ -320,8 +386,6 @@ function preencherModalProduto(produto) {
     modalCategoria,
     modalNome,
     modalDescricao,
-    modalNutricional,
-    modalUsoTradicional,
     modalUsoTradicionalBox
   } = elementos;
 
@@ -615,6 +679,7 @@ function inicializarSite() {
 
   renderizarProdutos();
   inicializarFiltrosProdutos();
+  inicializarBotaoVerMaisProdutos();
   inicializarCliqueProdutos();
   inicializarEventosModalProduto();
 
