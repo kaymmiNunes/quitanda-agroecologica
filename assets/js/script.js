@@ -752,34 +752,59 @@ function inicializarControleAudio() {
     botaoAudio.setAttribute("aria-label", "Tocar música do site");
   }
 
-  async function tentarTocarAudio() {
+  async function tocarAudio() {
     try {
       await musicaSite.play();
       marcarAudioTocando();
+      return true;
     } catch (erro) {
       marcarAudioPausado();
-      console.warn(
-        "O navegador bloqueou o autoplay com som. O usuário precisa tocar no botão de áudio.",
-        erro
-      );
+      return false;
     }
   }
 
-  tentarTocarAudio();
+  function removerEventosDePrimeiraInteracao() {
+    document.removeEventListener("pointerdown", iniciarAudioNaPrimeiraInteracao);
+    document.removeEventListener("touchstart", iniciarAudioNaPrimeiraInteracao);
+    document.removeEventListener("keydown", iniciarAudioNaPrimeiraInteracao);
+  }
+
+  async function iniciarAudioNaPrimeiraInteracao(event) {
+    const clicouNoBotaoAudio = event.target.closest?.("#botaoAudio");
+
+    if (clicouNoBotaoAudio) return;
+
+    const conseguiuTocar = await tocarAudio();
+
+    if (conseguiuTocar) {
+      removerEventosDePrimeiraInteracao();
+    }
+  }
+
+  async function tentarAutoplayInicial() {
+    const conseguiuTocar = await tocarAudio();
+
+    if (!conseguiuTocar) {
+      document.addEventListener("pointerdown", iniciarAudioNaPrimeiraInteracao);
+      document.addEventListener("touchstart", iniciarAudioNaPrimeiraInteracao, { passive: true });
+      document.addEventListener("keydown", iniciarAudioNaPrimeiraInteracao);
+    }
+  }
 
   botaoAudio.addEventListener("click", async () => {
-    try {
-      if (musicaSite.paused) {
-        await musicaSite.play();
-        marcarAudioTocando();
-      } else {
-        musicaSite.pause();
-        marcarAudioPausado();
+    if (musicaSite.paused) {
+      const conseguiuTocar = await tocarAudio();
+
+      if (conseguiuTocar) {
+        removerEventosDePrimeiraInteracao();
       }
-    } catch (erro) {
-      console.warn("Não foi possível controlar o áudio.", erro);
+    } else {
+      musicaSite.pause();
+      marcarAudioPausado();
     }
   });
+
+  tentarAutoplayInicial();
 }
 
 
@@ -800,7 +825,7 @@ function inicializarSite() {
   atualizarAnoRodape();
 
   inicializarMenuMobile();
-  inicializarControleAudio()
+  inicializarControleAudio();
 
   renderizarProdutos();
   inicializarFiltrosProdutos();

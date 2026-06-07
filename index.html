@@ -126,7 +126,7 @@
       <span>Catálogo</span>
       <h2>Produtos disponíveis na quitanda</h2>
       <p>
-        A disponibilidadde dos produtos e as informações nutricionais são referências aproximadas e podem variar conforme
+        A disponibilidade dos produtos e as informações nutricionais são referências aproximadas e podem variar conforme
         safra, preparo e fornecedor.
       </p>
     </div>
@@ -295,7 +295,7 @@
       <span>Receitas</span>
       <h2>Receitas de Milho da Paixão</h2>
       <p>
-        Receitas que utilizam os produtos da marca doRoçado, somando com ingredientes regionais e agroecológicos dos produtores locais.
+        Receitas que utilizam os produtos da marca do Roçado, somando com ingredientes regionais e agroecológicos dos produtores locais.
       </p>
     </div>
       <div class="receitas-grid" id="listaReceitas">
@@ -427,21 +427,35 @@
     </p>
   </footer>
 
-  <div class="controle-audio" id="controleAudio">
-  <audio id="musicaSite" autoplay loop preload="auto">
-    <source src="assets/audio/musica-fundo.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio HTML5.
-  </audio>
+    <a 
+      href="https://wa.me/5583998966635" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="botao-whatsapp-flutuante"
+      aria-label="Chamar a quitanda no WhatsApp"
+      title="Chamar no WhatsApp"
+    >
+      <img 
+        src="assets/img/logos/logo-whatsapp.png" 
+        alt="Ícone do WhatsApp"
+      >
+    </a>
 
-  <button 
-    type="button" 
-    class="botao-audio" 
-    id="botaoAudio"
-    aria-label="Tocar música do site"
-  >
-    ♫
-  </button>
-</div>
+  <div class="controle-audio" id="controleAudio">
+    <audio id="musicaSite" autoplay loop preload="auto">
+      <source src="assets/audio/musica-fundo.mp3" type="audio/mpeg">
+      Seu navegador não suporta áudio HTML5.
+    </audio>
+
+    <button 
+      type="button" 
+      class="botao-audio" 
+      id="botaoAudio"
+      aria-label="Tocar música do site"
+    >
+      ♫
+    </button>
+  </div>
 
   <script src="assets/js/produtos.js"></script>
   <script src="assets/js/receitas.js"></script>

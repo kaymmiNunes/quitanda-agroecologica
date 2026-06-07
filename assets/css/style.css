@@ -1384,6 +1384,7 @@ section {
 }
 
 .botao-audio {
+  position: relative;
   width: 52px;
   height: 52px;
   border: none;
@@ -1442,5 +1443,64 @@ section {
     width: 48px;
     height: 48px;
     font-size: 1.25rem;
+  }
+}
+
+/* =========================================================
+   BOTÃO FLUTUANTE DO WHATSAPP
+========================================================= */
+
+.botao-whatsapp-flutuante {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 5rem;
+  z-index: 2500;
+
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #25d366;
+  color: #ffffff;
+
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+
+  box-shadow: var(--sombra);
+
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.botao-whatsapp-flutuante img {
+  width: 50%;
+  height: auto;
+  display: block;
+}
+
+.botao-whatsapp-flutuante:hover {
+  transform: translateY(-3px);
+  background-color: #1ebe5d;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.botao-whatsapp-flutuante:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 560px) {
+  .botao-whatsapp-flutuante {
+    right: 1rem;
+    bottom: 4.8rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.35rem;
   }
 }
