@@ -438,6 +438,7 @@ section {
   margin-bottom: 1rem;
 }
 
+.missao-card,
 .agro-destaque,
 .info-card,
 .produto-card {
@@ -447,6 +448,7 @@ section {
   box-shadow: var(--sombra);
 }
 
+.missao-card,
 .agro-destaque h3,
 .info-card h3,
 .produto-card h3 {
@@ -1152,19 +1154,20 @@ section {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.9rem;
   }
-
+  .missao-card,
   .agro-destaque,
   .info-card,
   .produto-card {
     padding: 1rem;
   }
-
+  .missao-card,
   .agro-destaque h3,
   .info-card h3,
   .produto-card h3 {
     font-size: 1rem;
   }
 
+  .missao-card,
   .agro-destaque p,
   .info-card p,
   .produto-card p,
@@ -1721,6 +1724,7 @@ section {
 .catalogo-card,
 .receita-card,
 .info-card,
+.missao-card,
 .card-destaque,
 .imagem-destaque {
   transition:
@@ -1731,7 +1735,8 @@ section {
 .catalogo-card:hover,
 .receita-card:hover,
 .card-destaque:hover,
-.info-card:hover {
+.info-card:hover,
+.missao-card:hover {
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
 }
 
