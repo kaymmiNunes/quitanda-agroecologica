@@ -15,6 +15,7 @@ const CONSULTA_REDUCAO_MOVIMENTO = window.matchMedia("(prefers-reduced-motion: r
 let categoriaAtualProdutos = "todos";
 let produtosExpandidosMobile = false;
 let observadorAnimacoes = null;
+let estadoModalRegistrado = false;
 
 const elementos = {
   menuToggle: document.getElementById("menuToggle"),
@@ -179,20 +180,23 @@ function fecharDescricoesAbertas() {
   fecharModalProduto();
   fecharModalReceita();
   document.body.classList.remove("modal-aberto");
+  estadoModalRegistrado = false;
 }
 
 function registrarEstadoModal(tipoModal) {
-  if (!window.history || !window.history.pushState) return;
+  if (!window.history || !window.history.pushState || estadoModalRegistrado) return;
 
   history.pushState(
     { modalAberto: tipoModal },
     "",
     window.location.href
   );
+
+  estadoModalRegistrado = true;
 }
 
 function configurarHistoricoDoSite() {
-  if (!window.history || !window.history.pushState) return;
+  if (!window.history || !window.history.replaceState) return;
 
   history.replaceState(
     { pagina: "quitanda-base" },
@@ -200,32 +204,12 @@ function configurarHistoricoDoSite() {
     window.location.href
   );
 
-  history.pushState(
-    { pagina: "quitanda-controle" },
-    "",
-    window.location.href
-  );
-
   window.addEventListener("popstate", () => {
     if (existeDescricaoAberta()) {
       fecharDescricoesAbertas();
-
-      history.pushState(
-        { pagina: "quitanda-controle" },
-        "",
-        window.location.href
-      );
-
-      return;
     }
 
-    voltarParaInicio();
-
-    history.pushState(
-      { pagina: "quitanda-controle" },
-      "",
-      "#inicio"
-    );
+    estadoModalRegistrado = false;
   });
 }
 
@@ -265,6 +249,14 @@ function inicializarAnimacoesDeEntrada() {
   const elementosAnimados = document.querySelectorAll(seletores.join(","));
 
   if (CONSULTA_REDUCAO_MOVIMENTO.matches) {
+    elementosAnimados.forEach((elemento) => {
+      elemento.classList.add("revelar", "visivel");
+    });
+
+    return;
+  }
+
+  if (!("IntersectionObserver" in window)) {
     elementosAnimados.forEach((elemento) => {
       elemento.classList.add("revelar", "visivel");
     });
@@ -354,7 +346,7 @@ function renderizarProdutos(categoria = categoriaAtualProdutos) {
       <img 
         src="${produto.imagem}" 
         alt="${produto.nome}"
-        onerror="this.src='${IMAGEM_FALLBACK_PRODUTO}'"
+        onerror="this.onerror=null; this.src='${IMAGEM_FALLBACK_PRODUTO}'"
       >
 
       <div class="catalogo-card-conteudo">
@@ -548,6 +540,10 @@ function fecharModalProduto() {
 
   elementos.modalProduto.classList.remove("ativo");
   liberarRolagemPagina();
+
+  if (!existeDescricaoAberta()) {
+    estadoModalRegistrado = false;
+  }
 }
 
 function inicializarEventosModalProduto() {
@@ -588,7 +584,7 @@ function renderizarReceitas() {
       <img 
         src="${receita.imagem}" 
         alt="${receita.nome}"
-        onerror="this.src='${IMAGEM_FALLBACK_RECEITA}'"
+        onerror="this.onerror=null; this.src='${IMAGEM_FALLBACK_RECEITA}'"
       >
 
       <div>
@@ -710,6 +706,10 @@ function fecharModalReceita() {
 
   elementos.modalReceita.classList.remove("ativo");
   liberarRolagemPagina();
+
+  if (!existeDescricaoAberta()) {
+    estadoModalRegistrado = false;
+  }
 }
 
 function inicializarEventosModalReceita() {

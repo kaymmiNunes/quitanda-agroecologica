@@ -171,6 +171,16 @@ section {
   color: var(--cor-clara);
 }
 
+.btn:focus-visible,
+.menu a:focus-visible,
+.filtro-btn:focus-visible,
+.modal-fechar:focus-visible,
+.botao-audio:focus-visible,
+.botao-whatsapp-flutuante:focus-visible {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 3px;
+}
+
 .link-card {
   color: var(--cor-primaria);
   font-weight: 800;
@@ -424,10 +434,14 @@ section {
 ========================================================= */
 
 .sobre-grid,
-.agro-grid,
-.info-grid {
+.agro-grid {
   display: block;
-  grid-template-columns: repeat(2, 1fr);
+  text-align: left;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   text-align: left;
 }
@@ -456,7 +470,7 @@ section {
   box-shadow: var(--sombra);
 }
 
-.missao-card,
+.missao-card h3,
 .agro-destaque h3,
 .info-card h3,
 .produto-card h3 {
@@ -1168,14 +1182,14 @@ section {
   .produto-card {
     padding: 1rem;
   }
-  .missao-card,
+  .missao-card h3,
   .agro-destaque h3,
   .info-card h3,
   .produto-card h3 {
     font-size: 1rem;
   }
 
-  .missao-card,
+  .missao-card p,
   .agro-destaque p,
   .info-card p,
   .produto-card p,
