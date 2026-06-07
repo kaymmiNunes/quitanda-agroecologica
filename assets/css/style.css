@@ -448,7 +448,9 @@ section {
   box-shadow: var(--sombra);
 }
 
-.missao-card,
+.missao-card {
+  display: block;
+}
 .agro-destaque h3,
 .info-card h3,
 .produto-card h3 {
@@ -1730,6 +1732,7 @@ section {
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
+  
 }
 
 .catalogo-card:hover,
