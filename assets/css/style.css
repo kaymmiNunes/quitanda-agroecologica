@@ -426,9 +426,10 @@ section {
 .sobre-grid,
 .agro-grid,
 .info-grid {
-  display: grid;
+  display: block;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  text-align: center;
 }
 
 .sobre-grid p,
@@ -448,9 +449,7 @@ section {
   box-shadow: var(--sombra);
 }
 
-.missao-card {
-  display: block;
-}
+.missao-card,
 .agro-destaque h3,
 .info-card h3,
 .produto-card h3 {
