@@ -38,6 +38,8 @@
 
 html {
   scroll-behavior: smooth;
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -45,6 +47,8 @@ body {
   background-color: var(--cor-fundo);
   color: var(--cor-texto);
   line-height: 1.6;
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
 }
 
 body.modal-aberto {
